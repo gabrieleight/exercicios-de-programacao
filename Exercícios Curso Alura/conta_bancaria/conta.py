@@ -19,12 +19,33 @@ class Conta:
         self.sacar(valor)
         destino.depositar(valor)
         
+    def get_saldo(self):
+        return self.__saldo
+    
+    def get_titular(self):
+        return self.__titular
+    
+    @property
+    def limite(self):
+        return self.__limite
+    
+    @limite.setter
+    def limite(self, novo_limite):
+        self.__limite == novo_limite
+        
+"""  # Exemplo:    
+class Cliente:
+    def __init__(self, nome):
+        self.__nome = nome
+    
+    # Retorna o nome como método get_nome:    
+    @property
+    def nome(self):
+        return self.__nome.title()
+    
+    # Muda o nome como método set_nome:
+    @nome.setter
+    def nome(self, novo_nome):
+        self.__nome = novo_nome    
 
-conta1 = Conta(496256, 'Gabriel Gilberto', 660, 2500)
-conta2 = Conta(496854, 'Emmanuel Nicolas', 5500, 10000)
-
-print(conta1._Conta__saldo)
-print(conta2._Conta__saldo)
-conta2.transfere(10, conta1)
-conta1.extrato()
-conta2.extrato()
+"""
