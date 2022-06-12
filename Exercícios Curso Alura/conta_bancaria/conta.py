@@ -12,9 +12,16 @@ class Conta:
     def depositar(self, valor):
         self.__saldo += valor
         
-    def sacar(self, valor):
-        self.__saldo -= valor
+    def __pode_sacar(self, valor_a_sacar):
+        valor_disponivel = self.__saldo + self.__limite
+        return valor_a_sacar <= valor_disponivel
         
+    def sacar(self, valor):
+        if self.__pode_sacar(valor):
+            self.__saldo -= valor
+        else:
+            print(f"O valor {valor} ultrapassou o limite!")
+           
     def transfere(self, valor, destino):
         self.sacar(valor)
         destino.depositar(valor)
@@ -32,8 +39,16 @@ class Conta:
     @limite.setter
     def limite(self, novo_limite):
         self.__limite == novo_limite
+    
+    @staticmethod    
+    def codigo_banco():
+        return "001"
+
+
+
+
         
-"""  # Exemplo:    
+"""  # Exemplo de Getters e Setters:    
 class Cliente:
     def __init__(self, nome):
         self.__nome = nome
